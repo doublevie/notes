@@ -3,6 +3,10 @@
   <head>
     <meta charset="utf-8">
     <title>Notes</title>
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css"   >
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css"   >
+
     <style media="screen">
     body {background: #EEEEEE;}
  .note {position:fixed;right:10px;top:10px;height:30vh;width:30vh;
@@ -10,7 +14,7 @@
   -webkit-user-select: none;user-select: none;
   cursor:pointer;
   -webkit-box-shadow: 10px 4px 103px -32px rgba(0,0,0,0.84);
-
+padding: 15px;
                 }
 
                 .note.yellow {background: yellow;top:35px;right:30px; }
@@ -21,34 +25,54 @@ cursor:pointer;
                   position: absolute;right:5px;top:5px;
                   color:rgba(0,0,0,0.4)
                 }
+
+.delzone {
+position: fixed;
+right:0;bottom:0;
+width:10vh;height: 10vh;
+border-radius:  10vh 0 0 0 ;
+background: red
+}
+
+
     </style>
   </head>
   <body>
 
 
 <div class="controls" width="100%" height="100%">
-<button type="button" name="button"> Add note</button>
+<button type="button" name="button" class="btn btn-default "> Add note</button>
 
 </div>
 
 
    <div class="note" id="nt"   >
-<h1>BLABLA</h1>
+     <i class="close fa fa-close"></i>
+<h2>BLABLA</h2>
 <p>BLO BLO</p>
     </div>
 
    <div class="note yellow" id="nt2"   >
-<i class="close">x</i>
+
  ss
    </div>
 
 
 
+
+<div class="delzone">
+
+</div>
 </body>
 <script src="dNd.min.js" charset="utf-8"></script>
   <script>
   dragNdrop({
-    element: document.getElementById('nt')
+    element: document.getElementById('nt') ,
+     useTransform: true,
+     dropZones: [ document.querySelector('.delzone') ],
+     callback: function(event) {
+console.log(event);
+   }
   });
   dragNdrop({
     element: document.getElementById('nt2')
