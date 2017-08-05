@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Notes</title>
+    <style media="screen">
+    body {background: #EEEEEE;}
+ .note {position:fixed;right:10px;top:10px;height:30vh;width:30vh;
+  background:#fff;color:#333;border: 1px solid rgba(0,0,0,0.1);
+  -webkit-user-select: none;user-select: none;
+  cursor:pointer;
+  -webkit-box-shadow: 10px 4px 103px -32px rgba(0,0,0,0.84);
+
+                }
+
+                .note.yellow {background: yellow;top:35px;right:30px; }
+
+                .note .close {
+
+cursor:pointer;
+                  position: absolute;right:5px;top:5px;
+                  color:rgba(0,0,0,0.4)
+                }
+    </style>
+  </head>
+  <body>
+
+
+<div class="controls" width="100%" height="100%">
+<button type="button" name="button"> Add note</button>
+
+</div>
+
+
+   <div class="note" id="nt"   >
+<h1>BLABLA</h1>
+<p>BLO BLO</p>
+    </div>
+
+   <div class="note yellow" id="nt2"   >
+<i class="close">x</i>
+ ss
+   </div>
+
+
+
+</body>
+<script src="dNd.min.js" charset="utf-8"></script>
+  <script>
+  dragNdrop({
+    element: document.getElementById('nt')
+  });
+  dragNdrop({
+    element: document.getElementById('nt2')
+  });
+
+        </script>
+</html>
