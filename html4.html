@@ -8,16 +8,18 @@
     <link rel="stylesheet" href="assets/css/font-awesome.min.css"   >
 
     <style media="screen">
-    body {background: #EEEEEE;}
+    body {background: #F5F5F5;}
  .note {position:fixed;right:10px;top:10px;height:30vh;width:30vh;
   background:#fff;color:#333;border: 1px solid rgba(0,0,0,0.1);
   -webkit-user-select: none;user-select: none;
   cursor:pointer;
-  -webkit-box-shadow: 10px 4px 103px -32px rgba(0,0,0,0.84);
+  -webkit-box-shadow:0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px  -2px rgba(0,0,0,.2), 0 1px 5px 0px rgba(0,0,0,.12);
 padding: 15px;
                 }
 
-                .note.yellow {background: yellow;top:35px;right:30px; }
+                .note.yellow {background: yellow;border-color: # ; color:}
+                .note.red {background: #FFEBEE;border-color: #FFEBEE ; color:#000}
+                .note.pink {background: #FCE4EC;border-color: #FCE4EC ; color:#000}
 
                 .note .close {
 
@@ -34,6 +36,8 @@ border-radius:  10vh 0 0 0 ;
 background: red
 }
 
+.cont {position:fixed;left:10px;top:50px;right:10px;bottom: 0}
+
 
     </style>
   </head>
@@ -46,16 +50,27 @@ background: red
 </div>
 
 
+<div class="cont">
+
+
    <div class="note" id="nt"   >
-     <i class="close fa fa-close"></i>
+     <i class="close fa fa-close" onclick="confirmRemove()"></i>
+<h2 contenteditable="true">BLABLA</h2>
+<p>BLO BLO</p>
+    </div>
+
+   <div class="note red" id="nt2"   >
+     <i class="close fa fa-close" onclick="confirmRemove()"></i>
 <h2>BLABLA</h2>
 <p>BLO BLO</p>
     </div>
 
-   <div class="note yellow" id="nt2"   >
+   <div class="note pink" id="nt3"   >
+     <i class="close fa fa-close" onclick="confirmRemove()"></i>
+<h2>BLABLA</h2>
+<p>BLO BLO</p>
+    </div>
 
- ss
-   </div>
 
 
 
@@ -63,19 +78,32 @@ background: red
 <div class="delzone">
 
 </div>
+</div>
 </body>
 <script src="dNd.min.js" charset="utf-8"></script>
   <script>
+function confirmRemove(){
+  alert("are you sure ?");
+}
+
   dragNdrop({
     element: document.getElementById('nt') ,
      useTransform: true,
-     dropZones: [ document.querySelector('.delzone') ],
+       constraints: document.querySelector('.cont'),
      callback: function(event) {
-console.log(event);
+console.log(event );
    }
   });
+
+
   dragNdrop({
-    element: document.getElementById('nt2')
+    element: document.getElementById('nt2') ,
+
+  });
+
+  dragNdrop({
+    element: document.getElementById('nt3') ,
+
   });
 
         </script>
