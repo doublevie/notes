@@ -17,6 +17,20 @@
 padding: 15px;
                 }
 
+                .note:nth-child(1) {top:10px;right:10px;}
+                .note:nth-child(2) {top:20px;right:15px;}
+                .note:nth-child(3) {top:35px;right:20px;}
+                .note:nth-child(4) {top:40px;right:25px;}
+                .note:nth-child(5) {top:50px;right:30px;}
+                .note:nth-child(6) {top:60px;right:35px;}
+                .note:nth-child(7) {top:70px;right:40px;}
+                .note:nth-child(8) {top:80px;right:45px;}
+                .note:nth-child(9) {top:90px;right:50px;}
+                .note:nth-child(10) {top:100px;right:55px;}
+                .note:nth-child(11) {top:110px;right:60px;}
+                .note:nth-child(12) {top:120px;right:65px;}
+
+
                 .note.yellow {background: yellow;border-color: # ; color:}
                 .note.red {background: #FFEBEE;border-color: #FFEBEE ; color:#000}
                 .note.pink {background: #FCE4EC;border-color: #FCE4EC ; color:#000}
@@ -37,7 +51,35 @@ background: red
 }
 
 .cont {position:fixed;left:10px;top:50px;right:10px;bottom: 0}
+.addForm {position: fixed;z-index: 10000;border: 1px solid rgba(0,0,0,0.1);
+  background: #fff;
+  -webkit-box-shadow:0 2px 2px 0 rgba(255,255,255,.5), 0 3px 1px  -2px rgba(255,255,255,.7), 0 1px 5px 0px rgba(255,255,255,.5);
+  padding: 25px;color: #555;overflow: hidden;
+  opacity:0;pointer-events: none;
+  top:0;height:auto;left:0;width:auto;
+  right:99vw;bottom:99vh;
+}
 
+.addForm.showForm {
+  opacity:1;pointer-events: auto;
+  left:35vw;right:35vw;top:30vh;bottom:30vh;
+}
+ .addForm {
+  transition: all 1.5s ease !important;
+
+}
+
+.addForm p {font-size: 16px;}
+
+.colors i {margin-left:10px;font-size: 30px;}
+.colors i:hover , .colors i.current {background:#999}
+
+i.green {color:#00ff00;}
+i.red {color:#ff0000;}
+i.blue {color:#0000ff;}
+i.yellow {color:#ffff00;}
+
+.btn {margin-right:10px;border-radius: 0}
 
     </style>
   </head>
@@ -45,28 +87,26 @@ background: red
 
 
 <div class="controls" width="100%" height="100%">
-<button type="button" name="button" class="btn btn-default "> Add note</button>
+<button type="button" name="button" class="btn btn-default " onclick='notes.showForm()'> Add note</button>
 
 </div>
 
 
 <div class="cont">
-
-
    <div class="note" id="nt"   >
-     <i class="close fa fa-close" onclick="confirmRemove()"></i>
+     <i class="close fa fa-close" onclick="confirmRemove(this.parentNode)" style="transform:0"></i>
 <h2 contenteditable="true">BLABLA</h2>
 <p>BLO BLO</p>
     </div>
 
    <div class="note red" id="nt2"   >
-     <i class="close fa fa-close" onclick="confirmRemove()"></i>
+     <i class="close fa fa-close" onclick="confirmRemove(this.parentNode)" style="transform:10px"></i>
 <h2>BLABLA</h2>
 <p>BLO BLO</p>
     </div>
 
    <div class="note pink" id="nt3"   >
-     <i class="close fa fa-close" onclick="confirmRemove()"></i>
+     <i class="close fa fa-close" onclick="confirmRemove(this.parentNode)" style="transform:15"></i>
 <h2>BLABLA</h2>
 <p>BLO BLO</p>
     </div>
@@ -79,13 +119,32 @@ background: red
 
 </div>
 </div>
+
+
+
+<div class="addForm">
+  <h2 notetitle contenteditable="true">Titre</h2>
+
+  <textarea name="note" class="form-control" rows="8" cols="80"></textarea><br>
+  <div class="colors">
+    <i class="fa fa-circle green"></i>
+    <i class="fa fa-circle red"></i>
+    <i class="fa fa-circle blue"></i>
+    <i class="fa fa-circle yellow"></i>
+  </div>
+  <button type="button" name="button" class="btn btn-danger pull-right" onclick="notes.hideForm()"> Fermer</button>
+
+  <button type="button" name="button" class="btn btn-info pull-right" onclick="notes.submitAdd()"> Ajouter</button>
+</div>
+
 </body>
 <script src="dNd.min.js" charset="utf-8"></script>
+<script src="notes.js" charset="utf-8"></script>
   <script>
-function confirmRemove(){
+function confirmRemove(x){
+  x.remove();
   alert("are you sure ?");
 }
-
   dragNdrop({
     element: document.getElementById('nt') ,
      useTransform: true,
@@ -105,6 +164,8 @@ console.log(event );
     element: document.getElementById('nt3') ,
 
   });
+
+
 
         </script>
 </html>
